@@ -1,4 +1,4 @@
-module github.com/hanzozt/ziti-ops
+module github.com/hanzozt/zt-ops
 
 go 1.23.0
 

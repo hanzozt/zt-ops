@@ -20,8 +20,8 @@ import (
 	"fmt"
 
 	"github.com/michaelquigley/pfxlog"
-	"github.com/hanzozt/ziti-ops/buildinfo"
-	"github.com/hanzozt/ziti-ops/logs"
+	"github.com/hanzozt/zt-ops/buildinfo"
+	"github.com/hanzozt/zt-ops/logs"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
@@ -48,7 +48,7 @@ func init() {
 }
 
 var root = &cobra.Command{
-	Use:   "ziti-ops",
+	Use:   "zt-ops",
 	Short: "Ziti Ops Tools",
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 		if verbose {

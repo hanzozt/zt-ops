@@ -29,12 +29,12 @@ jobs:
           go-version-file: ./go.mod
 
       - name: Install Ziti CI
-        uses: hanzozt/ziti-ci@v1
+        uses: hanzozt/zt-ci@v1
 
       - name: Build and Test
         run: |
           go install github.com/mitchellh/gox@latest
-          $(go env GOPATH)/bin/ziti-ci generate-build-info buildinfo/buildinfo_generated.go buildinfo
+          $(go env GOPATH)/bin/zt-ci generate-build-info buildinfo/buildinfo_generated.go buildinfo
           CGO_ENABLED=true $(go env GOPATH)/bin/gox -os=darwin -arch=amd64 -output=$GOX_OUTPUT ./...
 
       - name: Upload artifacts
@@ -59,13 +59,13 @@ jobs:
           go-version-file: ./go.mod
 
       - name: Install Ziti CI
-        uses: hanzozt/ziti-ci@v1
+        uses: hanzozt/zt-ci@v1
 
       - name: Build and Test
         shell: bash
         run: |
           go install github.com/mitchellh/gox@latest
-          $(go env GOPATH)/bin/ziti-ci generate-build-info buildinfo/buildinfo_generated.go buildinfo
+          $(go env GOPATH)/bin/zt-ci generate-build-info buildinfo/buildinfo_generated.go buildinfo
           CGO_ENABLED=true $(go env GOPATH)/bin/gox -os=windows -arch=amd64 -output=$GOX_OUTPUT ./...
 
       - name: Upload artifacts
@@ -91,7 +91,7 @@ jobs:
           go-version-file: ./go.mod
 
       - name: Install Ziti CI
-        uses: hanzozt/ziti-ci@v1
+        uses: hanzozt/zt-ci@v1
 
       - name: Build and Test
         env:
@@ -99,13 +99,13 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get -yq install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf gcc-aarch64-linux-gnu
-          $(go env GOPATH)/bin/ziti-ci configure-git
-          $(go env GOPATH)/bin/ziti-ci generate-build-info buildinfo/buildinfo_generated.go buildinfo
+          $(go env GOPATH)/bin/zt-ci configure-git
+          $(go env GOPATH)/bin/zt-ci generate-build-info buildinfo/buildinfo_generated.go buildinfo
           go install github.com/mitchellh/gox@latest
           CGO_ENABLED=true $(go env GOPATH)/bin/gox -os=linux -arch=amd64 -output=$GOX_OUTPUT ./...
           CC=arm-linux-gnueabihf-gcc CGO_ENABLED=true gox -cgo -os=linux -arch=arm -output=$GOX_OUTPUT ./...
           CC=aarch64-linux-gnu-gcc CGO_ENABLED=true gox -cgo -os=linux -arch=arm64 -output=$GOX_OUTPUT ./...
-          echo "RELEASE_VERSION=$($(go env GOPATH)/bin/ziti-ci get-next-version -q)" >> $GITHUB_ENV
+          echo "RELEASE_VERSION=$($(go env GOPATH)/bin/zt-ci get-next-version -q)" >> $GITHUB_ENV
 
       - name: Download darwin release artifact
         uses: actions/download-artifact@v4
@@ -124,5 +124,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          $(go env GOPATH)/bin/ziti-ci tag -v -f version
-          $(go env GOPATH)/bin/ziti-ci publish-to-github ziti-ops
+          $(go env GOPATH)/bin/zt-ci tag -v -f version
+          $(go env GOPATH)/bin/zt-ci publish-to-github zt-ops
