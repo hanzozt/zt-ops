@@ -21,7 +21,7 @@ import (
 	"bytes"
 	"fmt"
 	"github.com/Jeffail/gabs/v2"
-	"github.com/openziti/foundation/v2/stringz"
+	"github.com/hanzozt/foundation/v2/stringz"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 	"os"

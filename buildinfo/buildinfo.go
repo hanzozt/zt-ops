@@ -17,7 +17,7 @@
 package buildinfo
 
 import (
-	"github.com/openziti/foundation/v2/versions"
+	"github.com/hanzozt/foundation/v2/versions"
 	"runtime"
 )
 

@@ -18,7 +18,7 @@ package logs
 
 import (
 	"fmt"
-	"github.com/openziti/foundation/v2/stringz"
+	"github.com/hanzozt/foundation/v2/stringz"
 )
 
 type LogFilterHandler struct {

@@ -20,8 +20,8 @@ import (
 	"fmt"
 
 	"github.com/michaelquigley/pfxlog"
-	"github.com/openziti/ziti-ops/buildinfo"
-	"github.com/openziti/ziti-ops/logs"
+	"github.com/hanzozt/ziti-ops/buildinfo"
+	"github.com/hanzozt/ziti-ops/logs"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
@@ -30,7 +30,7 @@ var verbose bool
 var logFormatter string
 
 func init() {
-	options := pfxlog.DefaultOptions().SetTrimPrefix("github.com/openziti/").NoColor()
+	options := pfxlog.DefaultOptions().SetTrimPrefix("github.com/hanzozt/").NoColor()
 	pfxlog.GlobalInit(logrus.InfoLevel, options)
 
 	root.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "Enable verbose logging")
@@ -57,7 +57,7 @@ var root = &cobra.Command{
 
 		switch logFormatter {
 		case "pfxlog":
-			pfxlog.SetFormatter(pfxlog.NewFormatter(pfxlog.DefaultOptions().SetTrimPrefix("github.com/openziti/").StartingToday()))
+			pfxlog.SetFormatter(pfxlog.NewFormatter(pfxlog.DefaultOptions().SetTrimPrefix("github.com/hanzozt/").StartingToday()))
 		case "json":
 			pfxlog.SetFormatter(&logrus.JSONFormatter{TimestampFormat: "2006-01-02T15:04:05.000Z"})
 		case "text":

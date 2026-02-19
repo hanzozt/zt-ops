@@ -19,7 +19,7 @@ package logs
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/openziti/foundation/v2/stringz"
+	"github.com/hanzozt/foundation/v2/stringz"
 	"github.com/pkg/errors"
 	"sort"
 	"time"
